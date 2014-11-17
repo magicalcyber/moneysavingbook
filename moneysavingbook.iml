@@ -24,6 +24,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="hibernate.cfg.xml" value="b352f6ff-5938-4ca5-adbb-47d7ab96a958" />
+          <unit-entry name="sessionFactory" />
         </datasource-map>
         <naming-strategy-map />
       </configuration>
@@ -78,6 +79,9 @@
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:1.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:5.1.2.Final" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.0.0" level="project" />
   </component>
 </module>
 

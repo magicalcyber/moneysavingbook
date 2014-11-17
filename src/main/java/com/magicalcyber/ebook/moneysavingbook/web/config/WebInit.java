@@ -4,6 +4,7 @@ import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -11,7 +12,7 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { RootConfig.class, DatabaseConfig.class };
+		return new Class<?>[] { RootConfig.class};
 	}
 
 	@Override
@@ -29,14 +30,17 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
+
+        OpenSessionInViewFilter openSessionInView = new OpenSessionInViewFilter();
+        openSessionInView.setSessionFactoryBeanName("sessionFactory");
         
-        return new Filter[] { characterEncodingFilter };
+        return new Filter[] { characterEncodingFilter, openSessionInView };
 	}
 
 	@Override
 	public void onStartup(ServletContext servletContext)
 			throws ServletException {
-		super.onStartup(servletContext);//MUST HAVE
+		super.onStartup(servletContext);
         servletContext.setInitParameter("defaultHtmlEscape", "true");
 	}
 }
